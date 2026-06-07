@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+python-dotenv
+groq
+pinecone
+pdfplumber
+python-docx
+pandas
+numpy
+openpyxl
+beautifulsoup4
+lxml
