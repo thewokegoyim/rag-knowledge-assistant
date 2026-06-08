@@ -2,7 +2,8 @@
 # main.py — FastAPI Backend
 # RAG Knowledge Assistant
 # ============================================================
-
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -10,7 +11,11 @@ from rag_engine import RAGEngine
 import os
 
 app = FastAPI(title="RAG Knowledge Assistant API")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
+@app.get("/ui")
+def serve_ui():
+    return FileResponse("static/index.html")
 # CORS — frontend ko allow karo
 app.add_middleware(
     CORSMiddleware,
